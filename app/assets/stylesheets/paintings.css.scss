@@ -1,0 +1,75 @@
+// Place all the styles related to the paintings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#new_painting {
+  clear: both;
+}
+#paintings{
+  height: 10px;
+  width: 100%;
+  display: inline;
+}
+.painting {
+position: relative;
+  border: solid 1px #CCC;
+  padding: 10px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+height:300px;
+  .name {
+    padding-top: 5px;
+    text-align: center;
+    font-weight: bold;
+height:73px;
+  }
+
+  .actions {
+    font-size: 10px;
+    text-align: center;
+    color: #777;
+  }
+}
+
+.upload {
+  border-top: solid 1px #CCC;
+  width: 400px;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+ .progress {
+    margin-top: 8px;
+    border: solid 1px #555;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+ .bar {
+      height: 10px;
+      background: #3EC144;
+    }
+
+#image_name{
+  width: 200px;
+}
+
+.fileupload {
+    width: 100px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+ //   background: green;
+}
+
+.fileupload input {
+    position: absolute;
+    top: 0;
+    right: 0; /* not left, because only the right part of the input seems to
+                 be clickable in some browser I can't remember */
+    cursor: pointer;
+    opacity: 0.0;
+    filter: alpha(opacity=0); /* and all the other old opacity stuff you
+                                 want to support */
+    font-size: 300px; /* wtf, but apparently the most reliable way to make
+                         a large part of the input clickable in most browsers */
+    height: 200px;
+}

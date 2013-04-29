@@ -1,0 +1,268 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+  body{
+      padding-bottom: 40px;
+      background: url(bg.jpg);
+      background-repeat: repeat;
+      font-family: helvetica_reg;
+      height: 100%;
+}
+
+  .navbar-inner1 {
+   /* background: url(cut.png);
+    background-repeat: repeat;*/
+    min-height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px;
+     background: #0088CC ;
+    
+}
+.navbar-inner2 {
+   /* background: url(cut.png);
+    background-repeat: repeat;*/
+    min-height: 30px;
+    
+    padding-right: 20px;
+   
+
+}
+.navbar-fixed-top{
+    background: #0088CC ;
+}
+.navbar .nav>li>a{
+    float:none;
+    padding:16px 8px 0px;
+    color: white;
+    text-decoration:none;
+    text-shadow:none;
+    font-size: 18px;
+    font-style: bold;
+   
+}
+.navbar .brand {
+    text-shadow:none;
+    color: whitesmoke;
+}
+.navbar .nav > li > a:hover {
+
+    font-size: 18px;
+
+    background-color: transparent;
+    color: wheat;
+    text-shadow: whitesmoke 0.01em 0.01em 0.01em;
+    text-decoration: none;
+    background:none;
+}
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+
+      background:none;
+      box-shadow:none;
+}
+.navbar .nav > .active > a{
+ 
+}
+
+.btn [class^="icon-"], .nav [class^="icon-"], .btn [class*=" icon-"], .nav [class*=" icon-"]{
+    line-height: 2.9em;
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+border-top-color: whitesmoke;
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret > a:hover {
+    color: whitesmoke;
+}
+/*Footer styles*/
+#push,
+      #footer {
+        height: 60px;
+        width: 100%;
+        text-align: center;
+      }
+      #footer p{
+          margin-top: 20px;
+}
+/*end of footer*/
+
+.dropdown-menu a{
+      margin: 0px 0 0 20px;
+      text-decoration: none;
+}
+.row .span2{
+    border: solid 1px #CCC;
+    padding: 10px;
+    border-radius: 4px;
+    width: 200px;
+}
+
+
+/*Carasoul overriding*/
+/* Carousel base class */
+.carousel .container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 60px;
+}
+
+
+.carousel-control {
+position: absolute;
+top: 40%;
+left: 15px;
+width: 40px;
+height: 40px;
+margin-top: 20px;
+font-size: 60px;
+font-weight: 100;
+line-height: 30px;
+color: white;
+text-align: center;
+background: #222;
+border: 3px solid white;
+-webkit-border-radius: 23px;
+-moz-border-radius: 23px;
+border-radius: 23px;
+opacity: 0.5;
+filter: alpha(opacity=50);
+}
+
+.carousel .item {
+  height: 740px;
+}
+.carousel img {
+  min-width: 100%;
+  height: 600px;
+}
+.carousel-inner{
+    height: 600px;
+}
+
+.carousel-caption {
+  background-color: transparent;
+  position: absolute;
+  max-width: 550px;
+  padding: 0 20px;
+  margin-bottom: 100px;
+}
+.carousel-caption h1,
+.carousel-caption .lead {
+  margin: 0;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+.carousel-caption .btn {
+  margin-top: 10px;
+}
+.carousel.carousel-fade .item {
+  -webkit-transition: opacity 2s ease-in-out;
+  -moz-transition: opacity 2s ease-in-out;
+  -ms-transition: opacity 2s ease-in-out;
+  -o-transition: opacity 2s ease-in-out;
+  transition: opacity 2s ease-in-out;
+}
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.carousel.carousel-fade .next,
+.carousel.carousel-fade .prev {
+  left: 0;
+  z-index: 1;
+}
+
+
+.unstyled li {
+    display: inline;
+    vertical-align: baseline;
+    padding: 0 16px;
+    position: relative;
+}
+
+     /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 70px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette-divider2 {
+      margin: 0px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 115px; /* Vertically center images part 1: add padding above and below text. */
+      margin: 0 40px 0 40px;
+       /* Vertically center images part 2: clear their floats. */
+      height: auto;
+    }
+    
+    .featurette-image {
+      margin-top: -110px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+      margin-right: 12px;
+      margin-bottom: 12px;
+      margin-left:12px;
+    }
+    .featurette-image-round-shadow{
+        -webkit-border-radius: 50em;
+	-moz-border-radius: 50em;
+	border-radius: 50em;
+        -moz-box-shadow: 3px 3px 5px 6px #ccc;
+        -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+        box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 35px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 35px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+     .pricing_grid .span3{
+        background: url(bg2.jpg);
+        background-repeat: repeat;
+        padding: 30px;
+}
+.pricing_grid .span3 img{
+    margin-left: 50px;
+}
+    /* end of Featurettes
+    ------------------------- */
+    .container{
+        width:100%;
+        margin-top: 120px;
+        
+}

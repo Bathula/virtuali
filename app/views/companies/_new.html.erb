@@ -1,0 +1,41 @@
+<h5 style="color: #0088CC;">Provide Your Company Details</h5>
+<br/><br/>
+<div>
+  <%= label_tag "Company Name *"%>
+  <%= text_field_tag "company[name]" %><span id="company_name_error" style="color:red;"></span>
+</div>
+<div>
+  <%= label_tag "Address" %>
+  <%= text_field_tag "company[address]" %><br />
+  <i style="font-size:12px;">( Format: DNo, Street, City, State and Zip )</i>
+</div><br />
+<div>
+  <%= label_tag "Phone Number" %>
+  <%= text_field_tag "company[phno]" %><br />
+  <i style="font-size:12px;">( Format: (Code) Phone Number )</i>
+</div><br />
+<%= label_tag "logo" %>
+<%= file_field_tag "company[logo]", :style => "display:none"%>
+
+<div class="input-append">
+  <input id="photoCover1" class="input-large" type="text" style="width:146px;"/>
+  <a class="btn btn-primary" onclick="$('input[id=company_logo]').click();">Browse</a>
+</div>
+
+<style>
+  span{
+    color: red;
+  }
+</style>
+<script>
+  $("#company_name").blur(function(event){
+    $('#company_name_error').html("");
+    if($("#company_name").val()==""){
+        $('#company_name_error').append("<br/>* Company Name Can't be empty.");
+    }
+});
+
+$('input[id=company_logo]').change(function(){
+    $('#photoCover1').val($(this).val());
+  });
+</script>

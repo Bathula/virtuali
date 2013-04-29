@@ -1,0 +1,33 @@
+<div style="margin-left:2%;">
+<p><span class="title-text">My Profile</span>&nbsp;<b><%= link_to "Edit".html_safe, '#edit_user', :onclick => "edit_user()", :class=>"btn btn-link" %></b></p>
+
+<% user = current_user %>
+<div style="float: right; height:200px;width: 120px;">
+  <%if user.image?%>
+  <%= image_tag user.image_url(:thumb), :class=>'first-grid' %>
+  <% else %>
+  <%= image_tag 'user_default_image.gif' %>
+  <% end %>
+  <center>
+    <strong><%= user.name%> </strong>
+    <p><%= "+1 "+user.phno %></p>
+  </center>
+</div>
+<div>
+  <u><h4>Address</h4></u>
+  <address>
+    <strong><%= user.name%> </strong><br/>
+    <%= user.add1 %><br/>
+    <%= user.add2 %><br/>
+    <%= user.state %><br />
+    <%= user.city %>, <%=  user.zipcode %>
+  </address>
+  <address>
+    <strong>Email</strong><br />
+    <a href="mailto:"><%= user.email %></a>
+  </address>
+</div><br />
+<hr />
+ <p class="text-info"><em><sup style="color:red;">*</sup> Your Account has been Created on :</em><%= user.created_at.strftime("%b-%d-%Y") %></p>
+ <p class="text-info"><em><sup style="color:red;">*</sup> Last Updated :</em> <%= user.updated_at.strftime("%b-%d-%Y") %></p>
+</div>

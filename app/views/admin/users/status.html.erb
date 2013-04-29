@@ -1,0 +1,123 @@
+<div class="navbar">
+  <div>
+    <ul class="nav unstyled" style="height:100px;margin-left: 10%;margin-top:2%;width:68%">
+      <li class="active tab"><%= link_to "Tours (#{@tours.count})", '#div_tours', "data-toggle" => "tab"%> </li>
+      <li class="tab"><%= link_to "Users ( #{@users.count})", "#div_user", "data-toggle" => "tab"%> </li>
+      <li class="tab"><%= link_to "Sales", '#div_sales', "data-toggle" => "tab" %></li>
+      <li class="tab"><%= link_to "Space Usage", '#div_usage', "data-toggle" => "tab" %></li>
+    </ul>
+  </div></div>
+  <div class="tab-content" style="margin-left: 12%; width: 65%;height:600px;padding: 20px; float: left;">
+     <div class="tab-pane" id="div_usage">
+       <div  style ="background-color:rgb(229, 229, 229); border-radius:10px;margin-top: 2%;padding:5% 0%;text-align: center; ">
+      <h3> Space Used : <%=@app_size%> MB.</h3>
+    </div>
+    </div>
+  <div class="tab-pane" id="div_user"><table class="index_table index">
+            <tr>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Ph No</th>
+              <th>Packages</th>
+              <th>&nbsp;</th>
+            </tr>
+            <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %> </td>
+              <td><%= user.email %></td>
+              <td><%= user.phno %> </td>
+              <td><%=user.package_name%></td>
+              <td>
+                <%= link_to "edit", edit_admin_user_path(user) %>&nbsp;
+                <%= link_to "view", admin_user_path(user), :method => :get %>&nbsp;
+                <%= link_to "delete", admin_user_path(user), :method => :delete, :confirm => "Are you sure?" %>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+  </div>
+  <div class="tab-pane active" id="div_tours">
+    <table class="index_table index">
+           <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th><%= sortable "status"%></th>
+              <th>Inactive From</th>
+
+            </tr>
+            <% @tours.each do |t| %>
+            <tr>
+              <td><%= t.name.gsub(/%/, '-') %></td>
+              <td> <%= t.product_name %></td>
+              <td style="color: green;"><%= t.tour_status %></td>
+              <% if t.status != 1  %>
+              <td><%= t.updated_at.strftime("%d-%b-%y, %A (%H:%M)")%> </td>
+              <% else %>
+              <td>-</td>
+              <% end %>
+            </tr>
+            <% end %>
+    </table><br />
+    <br />
+    <span class="label label-success"> &nbsp;<b>Tours Summary!</b>&nbsp; </span><br /><br />
+    <p class="text-info"><em> Number of Tours <b>Active</b> : </em><%= Tour.active.count %></p>
+    <p class="text-info"><em> Number of Tours <b>Inactive</b> : </em><%= Tour.inactive.count %></p>
+    <p class="text-info"><em> Number of Tours <b>Sold</b> : </em><%= Tour.sold.count %></p>
+  </div>
+  <div class="tab-pane" id="div_sales">
+    <table class="index_table index">
+      <tr>
+         <th>Payment Date</th>
+         <th>User Name</th>
+         <th>User Email</th>
+         <th>Amount($)</th>
+      </tr>
+      <% @payments.each do |payment| %>
+            <tr>
+              <td><%= payment.created_at.strftime("%d-%b-%y, %A") %></td>
+              <td><%= payment.user_name %> </td>
+              <td><%= payment.user_email %></td>
+              <td>$<%= payment.amount %> </td>
+              
+            </tr>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+            <th>Total Amount:</th>
+            <td> $<%=Payment.sum(:amount)%> </td>
+            </tr>
+          </table>
+  </div>
+</div>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<style>
+  .tab{
+    width:25%;
+    text-align:center;
+  }
+  .tab > a{
+    font-size:20px;
+    font-weight: bold;
+    line-height: 4;
+    box-shadow:10px 10px 5px #888888;
+    color:black!important
+  }
+  .tab > a:hover{
+    color:#888888 !important;
+  }
+  .tab-pane th .current {
+  padding-right: 2px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.tab-pane th .asc {
+  background-image: url(/assets/up_arrow.gif);
+}
+
+.tab-pane th .desc {
+  background-image:   url(/assets/down_arrow.gif);
+}
+</style>

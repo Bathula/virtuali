@@ -1,0 +1,19 @@
+
+<div id="card_details" class="modal hide fade in" style="display: none; ">
+<div class="modal-header">
+  <a class="close" data-dismiss="modal">X</a>
+  <h3>Card Details</h3>
+</div>
+  <div class="modal-body">
+<%=form_tag "/home/make_payment", :id=>'payment-form' do%>
+    <%= hidden_field_tag "operation_type", nil %>
+    <%=hidden_field_tag "pkg_id",nil%>
+    
+    <%=render '/home/payment_fields'%>
+
+
+<%end%>
+
+</div>
+
+</div>

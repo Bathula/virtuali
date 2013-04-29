@@ -1,0 +1,174 @@
+<%#= render 'side_buttons'%>
+<script>
+  $(document).ready(function(){
+
+    $.ajax({
+      type: 'GET',
+      url: '/tours/user_tours'
+
+    }).done(function(html) {
+      $("#user_tours").html(html);
+    });
+    
+  });
+  function display_tours(){
+    $.ajax({
+      type: 'GET',
+      url: '/tours/user_tours',
+      data: {
+        product_id: $('#product_id').val()
+      }
+    }).done(function(html) {
+      $("#user_tours").html(html);
+
+    });
+
+  }
+  function edit_user(){
+  //alert('ok');
+  $.ajax({
+    type: 'GET',
+    url: '/users/edit'
+  }).done(function(html){
+    $("#div_profile").html(html);
+  });
+  }
+  function edit_company(id){
+  //alert('ok');
+  $.ajax({
+    type: 'GET',
+    url: '/companies/edit',
+    data: {
+      id: id
+    }
+  }).done(function(html){
+    $("#div_company").html(html);
+  });
+  }
+
+  /* ajax for edit in same page*/
+ /* function edit_tour(id){
+    //alert(id);
+    //var x = id;
+    $.ajax({
+
+      type: 'GET',
+      url: '/tours/'+id+'/edit'
+      
+    }).done(function(html){
+      $("#div_dashboard").html(html)
+    });
+  }
+  function create_tour(){
+    //alert("ok")
+    $.ajax({
+
+      type: 'GET',
+      url: '/paintings/new'
+
+    }).done(function(html){
+      $("#user_tours").html(html)
+    });
+  }*/
+  function display_tours_for_status(){
+    $.ajax({
+      type: 'GET',
+      url: '/home/user_tours_status_change',
+      data: {
+        product_id: $('#product_id_status').val()
+      }
+    }).done(function(html) {
+      alert("ok");
+      $("#tour_status").html(html);
+
+    });
+
+  }
+  function change_status(tour)
+  {
+    
+    
+    sts=$("#"+tour).val();
+    $.ajax({
+      type: 'GET',
+      url: "/tours/status_change",
+
+      data: {
+        'id' : tour,
+        'status': sts
+      }
+
+    }).done(function(text) {
+      $("."+tour).text(text);
+    });
+  }
+  function apply_discount()
+  {
+    $.ajax({
+      type:'GET',
+      url: '/home/check_discount',
+      data:{
+        code: $('#coupon_id').val(),
+        amount:$('#total_amount').val()
+      }
+    }).done(function(html){
+
+      $('#discounted_total').html(html)
+
+    });
+  }
+</script>
+<div class="navbar">
+  <div>
+    <ul class="nav" style="height:100px;margin-left: 14%;margin-top:2%;width:68%">
+      <li class="active tab"><%= link_to '<i class="icon-desktop"></i> Dashboard'.html_safe, "#div_dashboard", "data-toggle" => "tab"%> </li>
+      <li class="tab"><%= link_to '<i class="icon-eye-open"></i> Status'.html_safe, '#div_status', "data-toggle" => "tab"%> </li>
+      <li class="tab"><%= link_to '<i class="icon-money"></i> Billing'.html_safe, '#div_billing', "data-toggle" => "tab" %></li>
+      <% if current_user.company %>
+      <li class="tab"><%= link_to '<i class="icon-cog"></i> Company'.html_safe, '#div_company', "data-toggle" => "tab" %></li>
+      <% end %>
+      <li class="tab"><%= link_to '<i class="icon-edit"></i> Profile'.html_safe, '#div_profile', "data-toggle" => "tab" %></li>
+      <li class="tab"><%#= link_to "Manage Account", '#div_manage', "data-toggle" => "tab"%> </li>
+      <li class="tab"><%#= link_to "Upgrade Account", '#div_upgrade', "data-toggle" => "tab"%> </li>
+    </ul>
+
+  </div></div>
+
+<%= render '/home/payment_form' %>
+<%=render "/home/tab_content"%>
+<%if current_user.company %>
+<style>
+  .tab{
+    width:20%;
+    text-align:center;
+  }
+  .tab > a{
+    font-size:20px;
+    font-weight: bold;
+    line-height: 4;
+    box-shadow:10px 10px 5px #888888;
+    color:#0088CC !important
+  }
+  .tab > a:hover{
+    color: black !important;
+  }
+  </style>
+  <% else %>
+<style>
+  .tab{
+    width:25%;
+    text-align:center;
+  }
+  .tab > a{
+    font-size:20px;
+    font-weight: bold;
+    line-height: 4;
+    box-shadow:10px 10px 5px #888888;
+    color:#0088CC !important
+  }
+  .tab > a:hover{
+    color: black !important;
+  }
+</style>
+<%  end %>
+
